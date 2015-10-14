@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Classes/Networking/SKClient+Discover.h

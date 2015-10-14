@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Dependencies/minizip/crypt.h

@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Classes/Networking/Attestation.pb.h

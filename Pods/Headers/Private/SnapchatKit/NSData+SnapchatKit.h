@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Classes/Categories/NSData+SnapchatKit.h

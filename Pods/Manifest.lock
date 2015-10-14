@@ -1,0 +1,10 @@
+PODS:
+  - SnapchatKit (0.3.5)
+
+DEPENDENCIES:
+  - SnapchatKit
+
+SPEC CHECKSUMS:
+  SnapchatKit: 5fc55c67a71e4d9fd5f08488dd41233b9bd27a70
+
+COCOAPODS: 0.38.2

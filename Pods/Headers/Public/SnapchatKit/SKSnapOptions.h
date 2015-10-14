@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Classes/Model/SKSnapOptions.h

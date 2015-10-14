@@ -1,0 +1,1 @@
+../../../SnapchatKit/Pod/Classes/Model/SKAddedFriend.h
