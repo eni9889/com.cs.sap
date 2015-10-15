@@ -81,7 +81,6 @@
 		E17044141B9FDC2500CE8917 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E17044131B9FDC2500CE8917 /* main.m */; };
 		E17044171B9FDC2500CE8917 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E17044161B9FDC2500CE8917 /* AppDelegate.m */; };
 		E170441F1B9FDC2500CE8917 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E170441E1B9FDC2500CE8917 /* Images.xcassets */; };
-		E170442E1B9FDC2500CE8917 /* SnapUploaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E170442D1B9FDC2500CE8917 /* SnapUploaderTests.m */; };
 		E172270E1BC89FA300943376 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E172270D1BC89FA300943376 /* UIImage+Extension.m */; };
 		E17227111BC8E07900943376 /* CTAssetScrollView2.m in Sources */ = {isa = PBXBuildFile; fileRef = E17227101BC8E07900943376 /* CTAssetScrollView2.m */; };
 		E172D1531BC37E4600D74209 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = E172D14C1BC37E4600D74209 /* SVIndefiniteAnimatedView.m */; };
@@ -135,6 +134,8 @@
 		E1B015E31BB13333000467DF /* CTAssetThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1B015B01BB13333000467DF /* CTAssetThumbnailView.m */; };
 		E1B015E41BB13333000467DF /* CTAssetsPicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B015B21BB13333000467DF /* CTAssetsPicker.strings */; };
 		E1B015E51BB13333000467DF /* CTAssetsPicker.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B015B41BB13333000467DF /* CTAssetsPicker.xcassets */; };
+		E1C96CA31BCF440500D15870 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C96C9F1BCF440500D15870 /* libXG-SDK.a */; settings = {ASSET_TAGS = (); }; };
+		E1C96CA41BCF440500D15870 /* ReleaseNotes.txt in Resources */ = {isa = PBXBuildFile; fileRef = E1C96CA01BCF440500D15870 /* ReleaseNotes.txt */; settings = {ASSET_TAGS = (); }; };
 		E1D961841BCB4A020061C745 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D961831BCB4A020061C745 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
 		E1D961861BCB53490061C745 /* appAbout.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D961851BCB53490061C745 /* appAbout.png */; settings = {ASSET_TAGS = (); }; };
 		E1D9618B1BCBB74C0061C745 /* pen_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = E1D961871BCBB74C0061C745 /* pen_button_pressed.png */; settings = {ASSET_TAGS = (); }; };
@@ -154,16 +155,6 @@
 		E1F167741BBBFC6C00233E31 /* AdobeCreativeSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F167721BBBFC6C00233E31 /* AdobeCreativeSDKCore.framework */; };
 		E1F167751BBBFC6C00233E31 /* AdobeCreativeSDKImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1F167731BBBFC6C00233E31 /* AdobeCreativeSDKImage.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		E17044281B9FDC2500CE8917 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E17044061B9FDC2500CE8917 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E170440D1B9FDC2500CE8917;
-			remoteInfo = SnapUploader;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		038F38FEB77DBE72D1C9324D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,7 +251,6 @@
 		E17044161B9FDC2500CE8917 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E170441E1B9FDC2500CE8917 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E17044211B9FDC2500CE8917 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		E17044271B9FDC2500CE8917 /* SnapUploaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapUploaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E170442C1B9FDC2500CE8917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E170442D1B9FDC2500CE8917 /* SnapUploaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SnapUploaderTests.m; sourceTree = "<group>"; };
 		E172270C1BC89FA300943376 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
@@ -378,6 +368,10 @@
 		E1B015C71BB13333000467DF /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CTAssetsPicker.strings; sourceTree = "<group>"; };
 		E1B015C81BB13333000467DF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CTAssetsPicker.strings"; sourceTree = "<group>"; };
 		E1B015C91BB13333000467DF /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/CTAssetsPicker.strings"; sourceTree = "<group>"; };
+		E1C96C9F1BCF440500D15870 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		E1C96CA01BCF440500D15870 /* ReleaseNotes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReleaseNotes.txt; sourceTree = "<group>"; };
+		E1C96CA11BCF440500D15870 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		E1C96CA21BCF440500D15870 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
 		E1D961831BCB4A020061C745 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E1D961851BCB53490061C745 /* appAbout.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appAbout.png; sourceTree = SOURCE_ROOT; };
 		E1D961871BCBB74C0061C745 /* pen_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pen_button_pressed.png; sourceTree = "<group>"; };
@@ -410,6 +404,7 @@
 				E1AA70661BCA777F00F2F157 /* EventKitUI.framework in Frameworks */,
 				E1AA70621BCA777700F2F157 /* CoreTelephony.framework in Frameworks */,
 				E1AA70601BCA777200F2F157 /* CoreGraphics.framework in Frameworks */,
+				E1C96CA31BCF440500D15870 /* libXG-SDK.a in Frameworks */,
 				E1AA705E1BCA776B00F2F157 /* AVFoundation.framework in Frameworks */,
 				E1AA705C1BCA776500F2F157 /* AudioToolbox.framework in Frameworks */,
 				E1AA705A1BCA775F00F2F157 /* AdSupport.framework in Frameworks */,
@@ -424,13 +419,6 @@
 				E1E7585A1BBB884C001C7397 /* libz.tbd in Frameworks */,
 				E1E758581BBB8844001C7397 /* libc++.tbd in Frameworks */,
 				1AA244A7974585C0F42F4547 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E17044241B9FDC2500CE8917 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,7 +578,6 @@
 			isa = PBXGroup;
 			children = (
 				E170440E1B9FDC2500CE8917 /* Snap Upload.app */,
-				E17044271B9FDC2500CE8917 /* SnapUploaderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -598,6 +585,7 @@
 		E17044101B9FDC2500CE8917 /* SnapUploader */ = {
 			isa = PBXGroup;
 			children = (
+				E1C96C9E1BCF440500D15870 /* xgSDK */,
 				E1AA70571BCA76BD00F2F157 /* GoogleMobileAds.framework */,
 				E172D14A1BC37E4600D74209 /* SVProgressHUD */,
 				E14FF8081BA945DC00BC22F2 /* LoginViewController.h */,
@@ -772,6 +760,18 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		E1C96C9E1BCF440500D15870 /* xgSDK */ = {
+			isa = PBXGroup;
+			children = (
+				E1C96C9F1BCF440500D15870 /* libXG-SDK.a */,
+				E1C96CA01BCF440500D15870 /* ReleaseNotes.txt */,
+				E1C96CA11BCF440500D15870 /* XGPush.h */,
+				E1C96CA21BCF440500D15870 /* XGSetting.h */,
+			);
+			name = xgSDK;
+			path = ../../xgSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -794,24 +794,6 @@
 			productReference = E170440E1B9FDC2500CE8917 /* Snap Upload.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E17044261B9FDC2500CE8917 /* SnapUploaderTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E17044341B9FDC2500CE8917 /* Build configuration list for PBXNativeTarget "SnapUploaderTests" */;
-			buildPhases = (
-				E17044231B9FDC2500CE8917 /* Sources */,
-				E17044241B9FDC2500CE8917 /* Frameworks */,
-				E17044251B9FDC2500CE8917 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E17044291B9FDC2500CE8917 /* PBXTargetDependency */,
-			);
-			name = SnapUploaderTests;
-			productName = SnapUploaderTests;
-			productReference = E17044271B9FDC2500CE8917 /* SnapUploaderTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -823,10 +805,6 @@
 				TargetAttributes = {
 					E170440D1B9FDC2500CE8917 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					E17044261B9FDC2500CE8917 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = E170440D1B9FDC2500CE8917;
 					};
 				};
 			};
@@ -865,7 +843,6 @@
 			projectRoot = "";
 			targets = (
 				E170440D1B9FDC2500CE8917 /* SnapUploader */,
-				E17044261B9FDC2500CE8917 /* SnapUploaderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -927,6 +904,7 @@
 				E167D2AD1BB41E7100EC335F /* x_button_pressed.png in Resources */,
 				E167D2AB1BB41E7100EC335F /* x_button.png in Resources */,
 				E167D2A01BB41E7100EC335F /* timer_button@2x.png in Resources */,
+				E1C96CA41BCF440500D15870 /* ReleaseNotes.txt in Resources */,
 				E167D21C1BB41E7100EC335F /* back_Button.png in Resources */,
 				E1B015E51BB13333000467DF /* CTAssetsPicker.xcassets in Resources */,
 				E167D29D1BB41E7100EC335F /* share.png in Resources */,
@@ -948,13 +926,6 @@
 				364B01DF1BC4236000BFF291 /* backArrow@3x.png in Resources */,
 				E167D2161BB41E7100EC335F /* arrow1.png in Resources */,
 				E1D9618D1BCBB74C0061C745 /* pen_button.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E17044251B9FDC2500CE8917 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,23 +1023,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E17044231B9FDC2500CE8917 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E170442E1B9FDC2500CE8917 /* SnapUploaderTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		E17044291B9FDC2500CE8917 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E170440D1B9FDC2500CE8917 /* SnapUploader */;
-			targetProxy = E17044281B9FDC2500CE8917 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E17044201B9FDC2500CE8917 /* LaunchScreen.xib */ = {
@@ -1128,7 +1083,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1150,7 +1106,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
+				PROVISIONING_PROFILE = "cf7dfbda-eec5-4f62-9da6-280eb062dcb4";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1199,6 +1155,8 @@
 			baseConfigurationReference = A2DF7C12EB615928F3023D2D /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chen Shun (Y62CH6PVF9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chen Shun (Y62CH6PVF9)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -1218,6 +1176,7 @@
 				INFOPLIST_FILE = SnapUploader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../xgSDK;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1226,7 +1185,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Snap Upload";
-				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
+				PROVISIONING_PROFILE = "cf7dfbda-eec5-4f62-9da6-280eb062dcb4";
 			};
 			name = Debug;
 		};
@@ -1255,6 +1214,7 @@
 				INFOPLIST_FILE = SnapUploader/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = ../xgSDK;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1264,40 +1224,6 @@
 				);
 				PRODUCT_NAME = "Snap Upload";
 				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
-			};
-			name = Release;
-		};
-		E17044351B9FDC2500CE8917 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SnapUploaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapUploader.app/SnapUploader";
-			};
-			name = Debug;
-		};
-		E17044361B9FDC2500CE8917 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = SnapUploaderTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapUploader.app/SnapUploader";
 			};
 			name = Release;
 		};
@@ -1318,15 +1244,6 @@
 			buildConfigurations = (
 				E17044321B9FDC2500CE8917 /* Debug */,
 				E17044331B9FDC2500CE8917 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E17044341B9FDC2500CE8917 /* Build configuration list for PBXNativeTarget "SnapUploaderTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E17044351B9FDC2500CE8917 /* Debug */,
-				E17044361B9FDC2500CE8917 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

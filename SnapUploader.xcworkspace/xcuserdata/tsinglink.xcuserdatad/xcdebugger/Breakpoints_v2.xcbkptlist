@@ -121,13 +121,13 @@
                   symbolName = "-[SKClient updateSession:]"
                   moduleName = "Snap Upload"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tsinglink/GitHub/SnapUploader/Pods/SnapchatKit/Pod/Classes/Networking/SKClient.m"
-                  timestampString = "466510056.600039"
+                  urlString = "file:///Users/tsinglink/GitHub/com.cs.sap/Pods/SnapchatKit/Pod/Classes/Networking/SKClient.m"
+                  timestampString = "466572795.530899"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "577"
                   endingLineNumber = "577"
-                  offsetFromSymbolStart = "941">
+                  offsetFromSymbolStart = "884">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -136,15 +136,31 @@
                   symbolName = "__26-[SKClient updateSession:]_block_invoke"
                   moduleName = "Snap Upload"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/tsinglink/GitHub/SnapUploader/Pods/SnapchatKit/Pod/Classes/Networking/SKClient.m"
-                  timestampString = "466510056.60016"
+                  urlString = "file:///Users/tsinglink/GitHub/com.cs.sap/Pods/SnapchatKit/Pod/Classes/Networking/SKClient.m"
+                  timestampString = "466572795.531043"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "577"
                   endingLineNumber = "577"
-                  offsetFromSymbolStart = "67">
+                  offsetFromSymbolStart = "72">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SnapUploader/AppDelegate.m"
+            timestampString = "466571942.929312"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "-application:didReceiveLocalNotification:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
