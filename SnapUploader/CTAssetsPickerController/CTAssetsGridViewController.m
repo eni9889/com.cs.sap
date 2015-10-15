@@ -150,7 +150,9 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
         CGPoint origin = CGPointMake(0.0, 0.0);
         app.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait
                                                        origin:origin];
-        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";
+        //ca-app-pub-2517211357606902/2881830872  com.cs.snapuploadCircle   1049641460
+        //app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674"; com.cs.snapuloader  1048460977
+        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2881830872";
         app.adBanner.delegate = self;
         [app.adBanner setRootViewController:app.window.rootViewController];
         [app.adBanner loadRequest:[self createRequest]];

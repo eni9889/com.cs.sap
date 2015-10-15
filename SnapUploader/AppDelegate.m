@@ -97,11 +97,11 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [iRate sharedInstance].applicationBundleID = @"com.cs.snapuloader";
-    [iRate sharedInstance].appStoreID = 1048460977;
+    [iRate sharedInstance].applicationBundleID = @"com.cs.snapuploadCircle";
+    [iRate sharedInstance].appStoreID = 1049641460;
     [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
     [iRate sharedInstance].usesUntilPrompt = 3;
-    [iRate sharedInstance].daysUntilPrompt = 0.5;
+    [iRate sharedInstance].daysUntilPrompt = 1;
 
     return YES;
 }
