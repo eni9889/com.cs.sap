@@ -66,7 +66,7 @@
 
 - (void)sendFeedback:(NSString *)title body:(NSString *)body
 {
-    [self sendEmail:title body:body recipient:@"chenshun87@126.com"];
+    [self sendEmail:title body:body recipient:@"wangqiong_01@126.com"];
 }
 
 #pragma mark -

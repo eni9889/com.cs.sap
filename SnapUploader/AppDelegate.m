@@ -36,52 +36,52 @@
 
     [self showMainView];
     
-    [XGPush startApp:2200153612 appKey:@"I77MS112DAVZ"];
-    void (^successCallback)(void) = ^(void){
-        //如果变成需要注册状态
-        if(![XGPush isUnRegisterStatus])
-        {
-            //iOS8注册push方法
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-            
-            float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
-            if(sysVer < 8){
-                [self registerPush];
-            }
-            else{
-                [self registerPushForIOS8];
-            }
-#else
-            //iOS8之前注册push方法
-            //注册Push服务，注册后才能收到推送
-            [self registerPush];
-#endif
-        }
-    };
-    [XGPush initForReregister:successCallback];
-    
-    //推送反馈回调版本示例
-    void (^successBlock)(void) = ^(void){
-        //成功之后的处理
-        NSLog(@"[XGPush]handleLaunching's successBlock");
-    };
-    
-    void (^errorBlock)(void) = ^(void){
-        //失败之后的处理
-        NSLog(@"[XGPush]handleLaunching's errorBlock");
-    };
-    
-    //角标清0
-    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    [XGPush handleLaunching:launchOptions successCallback:successBlock errorCallback:errorBlock];
-
-    if (launchOptions) {
-        NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        if (pushNotificationKey)
-        {
-            //这里定义自己的处理方式
-        }
-    }
+//    [XGPush startApp:2200153612 appKey:@"I77MS112DAVZ"];
+//    void (^successCallback)(void) = ^(void){
+//        //如果变成需要注册状态
+//        if(![XGPush isUnRegisterStatus])
+//        {
+//            //iOS8注册push方法
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+//            
+//            float sysVer = [[[UIDevice currentDevice] systemVersion] floatValue];
+//            if(sysVer < 8){
+//                [self registerPush];
+//            }
+//            else{
+//                [self registerPushForIOS8];
+//            }
+//#else
+//            //iOS8之前注册push方法
+//            //注册Push服务，注册后才能收到推送
+//            [self registerPush];
+//#endif
+//        }
+//    };
+//    [XGPush initForReregister:successCallback];
+//    
+//    //推送反馈回调版本示例
+//    void (^successBlock)(void) = ^(void){
+//        //成功之后的处理
+//        NSLog(@"[XGPush]handleLaunching's successBlock");
+//    };
+//    
+//    void (^errorBlock)(void) = ^(void){
+//        //失败之后的处理
+//        NSLog(@"[XGPush]handleLaunching's errorBlock");
+//    };
+//    
+//    //角标清0
+//    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+//    [XGPush handleLaunching:launchOptions successCallback:successBlock errorCallback:errorBlock];
+//
+//    if (launchOptions) {
+//        NSDictionary* pushNotificationKey = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+//        if (pushNotificationKey)
+//        {
+//            //这里定义自己的处理方式
+//        }
+//    }
     
     [[AdobeUXAuthManager sharedManager] setAuthenticationParametersWithClientID:@"16015d85dcc843eaa46f6db3a3675754" clientSecret:@"512c4633-c473-4318-9bfa-4c7d134bf88d" enableSignUp:NO];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorFromHex:0x2e926b]];
@@ -97,8 +97,8 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
-    [iRate sharedInstance].applicationBundleID = @"com.cs.snapuploadCircle";
-    [iRate sharedInstance].appStoreID = 1049641460;
+    [iRate sharedInstance].applicationBundleID = @"com.wq.snapupload";
+    [iRate sharedInstance].appStoreID = 1050477919;
     [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
     [iRate sharedInstance].usesUntilPrompt = 3;
     [iRate sharedInstance].daysUntilPrompt = 1;
@@ -159,125 +159,125 @@
 }
 
 
--(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
-    //notification是发送推送时传入的字典信息
-    [XGPush localNotificationAtFrontEnd:notification userInfoKey:@"clockID" userInfoValue:@"myid"];
-    [XGPush delLocalNotification:notification];
-}
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
-
-//注册UserNotification成功的回调
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-    
-}
-
-//按钮点击事件回调
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
-    if([identifier isEqualToString:@"ACCEPT_IDENTIFIER"]){
-        NSLog(@"ACCEPT_IDENTIFIER is clicked");
-    }
-    
-    completionHandler();
-}
-
-#endif
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-
-    void (^successBlock)(void) = ^(void){
-        //成功之后的处理
-        NSLog(@"[XGPush Demo]register successBlock");
-    };
-    
-    void (^errorBlock)(void) = ^(void){
-        //失败之后的处理
-        NSLog(@"[XGPush Demo]register errorBlock");
-    };
-    
-    NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
-    
-    //如果不需要回调
-    //[XGPush registerDevice:deviceToken];
-    
-    //打印获取的deviceToken的字符串
-    NSLog(@"[XGPush Demo] deviceTokenStr is %@",deviceTokenStr);
-}
-
-//如果deviceToken获取不到会进入此事件
-- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
-    
-    NSString *str = [NSString stringWithFormat: @"Error: %@",err];
-    
-    NSLog(@"[XGPush Demo]%@",str);
-}
-
-- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
-{
-    //推送反馈(app运行时)
-    [XGPush handleReceiveNotification:userInfo];
-    NSString *content = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    NSString *title = [userInfo objectForKey:@"title"];
-    self.appURL = [userInfo objectForKey:@"appURL"];
-    if (self.appURL != nil)
-    {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"Yes", nil];
-        [alertView show];
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (self.appURL != nil)
-    {
-        if (buttonIndex == 1)
-        {
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appURL]];
-        }
-        
-        self.appURL = nil;
-    }
-}
-
-- (void)registerPushForIOS8{
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-    
-    //Types
-    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
-    
-    //Actions
-    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
-    
-    acceptAction.identifier = @"ACCEPT_IDENTIFIER";
-    acceptAction.title = @"Accept";
-    
-    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
-    acceptAction.destructive = NO;
-    acceptAction.authenticationRequired = NO;
-    
-    UIMutableUserNotificationCategory *inviteCategory = [[UIMutableUserNotificationCategory alloc] init];
-    
-    inviteCategory.identifier = @"INVITE_CATEGORY";
-    
-    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextDefault];
-    
-    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextMinimal];
-    
-    
-    NSSet *categories = [NSSet setWithObjects:inviteCategory, nil];
-
-    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
-    
-    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
-    
-    
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-#endif
-}
-
-- (void)registerPush{
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
-}
-
+//-(void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification{
+//    //notification是发送推送时传入的字典信息
+//    [XGPush localNotificationAtFrontEnd:notification userInfoKey:@"clockID" userInfoValue:@"myid"];
+//    [XGPush delLocalNotification:notification];
+//}
+//
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= _IPHONE80_
+//
+////注册UserNotification成功的回调
+//- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+//{
+//    
+//}
+//
+////按钮点击事件回调
+//- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(void (^)())completionHandler{
+//    if([identifier isEqualToString:@"ACCEPT_IDENTIFIER"]){
+//        NSLog(@"ACCEPT_IDENTIFIER is clicked");
+//    }
+//    
+//    completionHandler();
+//}
+//
+//#endif
+//
+//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//
+//    void (^successBlock)(void) = ^(void){
+//        //成功之后的处理
+//        NSLog(@"[XGPush Demo]register successBlock");
+//    };
+//    
+//    void (^errorBlock)(void) = ^(void){
+//        //失败之后的处理
+//        NSLog(@"[XGPush Demo]register errorBlock");
+//    };
+//    
+//    NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
+//    
+//    //如果不需要回调
+//    //[XGPush registerDevice:deviceToken];
+//    
+//    //打印获取的deviceToken的字符串
+//    NSLog(@"[XGPush Demo] deviceTokenStr is %@",deviceTokenStr);
+//}
+//
+////如果deviceToken获取不到会进入此事件
+//- (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err {
+//    
+//    NSString *str = [NSString stringWithFormat: @"Error: %@",err];
+//    
+//    NSLog(@"[XGPush Demo]%@",str);
+//}
+//
+//- (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo
+//{
+//    //推送反馈(app运行时)
+//    [XGPush handleReceiveNotification:userInfo];
+//    NSString *content = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+//    NSString *title = [userInfo objectForKey:@"title"];
+//    self.appURL = [userInfo objectForKey:@"appURL"];
+//    if (self.appURL != nil)
+//    {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:content delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"Yes", nil];
+//        [alertView show];
+//    }
+//}
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+//{
+//    if (self.appURL != nil)
+//    {
+//        if (buttonIndex == 1)
+//        {
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.appURL]];
+//        }
+//        
+//        self.appURL = nil;
+//    }
+//}
+//
+//- (void)registerPushForIOS8{
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+//    
+//    //Types
+//    UIUserNotificationType types = UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+//    
+//    //Actions
+//    UIMutableUserNotificationAction *acceptAction = [[UIMutableUserNotificationAction alloc] init];
+//    
+//    acceptAction.identifier = @"ACCEPT_IDENTIFIER";
+//    acceptAction.title = @"Accept";
+//    
+//    acceptAction.activationMode = UIUserNotificationActivationModeForeground;
+//    acceptAction.destructive = NO;
+//    acceptAction.authenticationRequired = NO;
+//    
+//    UIMutableUserNotificationCategory *inviteCategory = [[UIMutableUserNotificationCategory alloc] init];
+//    
+//    inviteCategory.identifier = @"INVITE_CATEGORY";
+//    
+//    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextDefault];
+//    
+//    [inviteCategory setActions:@[acceptAction] forContext:UIUserNotificationActionContextMinimal];
+//    
+//    
+//    NSSet *categories = [NSSet setWithObjects:inviteCategory, nil];
+//
+//    UIUserNotificationSettings *mySettings = [UIUserNotificationSettings settingsForTypes:types categories:categories];
+//    
+//    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+//    
+//    
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//#endif
+//}
+//
+//- (void)registerPush{
+//    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
+//}
+//
 @end
