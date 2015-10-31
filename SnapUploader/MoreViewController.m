@@ -180,7 +180,7 @@
         if (row == 0)
         {
             NSString *url = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=2&mt=8";
-            NSURL *urlStr = [NSURL URLWithString:[NSString stringWithFormat:url, @"1050477919"]];
+            NSURL *urlStr = [NSURL URLWithString:[NSString stringWithFormat:url, @"1048460977"]];
             [[UIApplication sharedApplication] openURL:urlStr];
         }
         else

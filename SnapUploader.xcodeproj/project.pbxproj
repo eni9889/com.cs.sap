@@ -1128,8 +1128,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Qiong (SYX825N87A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Qiong (SYX825N87A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1144,7 +1144,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c5970402-1548-4431-baf2-4e395fe7af01";
+				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1194,8 +1194,8 @@
 			baseConfigurationReference = 5170D502F44F92BAF12B1505 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Qiong (SYX825N87A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Qiong (SYX825N87A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
@@ -1224,7 +1224,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "Snap Upload";
-				PROVISIONING_PROFILE = "c5970402-1548-4431-baf2-4e395fe7af01";
+				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
 			};
 			name = Release;
 		};
