@@ -94,11 +94,13 @@
 
 - (void)startLogin:(BOOL)enterToMain block:(BOOL)blockUI
 {
+    self.loginErrorCode = -1;
     BOOL sucess = [self checkParame];
     if (sucess)
     {
         [self loginSKClient:enterToMain block:blockUI];
     }
+    
 }
 
 //- (void)restoreSession

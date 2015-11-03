@@ -160,9 +160,15 @@
 {
     [self.arrowImageView startAnimating];
     AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.loginViewController.loginErrorCode != 0)
+    if (app.loginViewController.loginErrorCode == 1)
     {
         [SVProgressHUD showErrorWithStatus:@"Logining, please wait for a moment about 10 seconds, then try again."];
+        [SVProgressHUD dismissWithDelay:3];
+        return;
+    }
+    if (app.loginViewController.loginErrorCode == -1)
+    {
+        [SVProgressHUD showErrorWithStatus:@"Sorry, we encountered some error, please exit and then sign in again"];
         [SVProgressHUD dismissWithDelay:3];
         return;
     }

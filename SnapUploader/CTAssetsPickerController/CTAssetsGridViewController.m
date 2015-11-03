@@ -43,6 +43,7 @@
 //#import "UIImageExtras.h"
 
 #import "MoreViewController.h"
+#import "CTAssetsPickerAccessDeniedView.h"
 
 NSString * const CTAssetsGridViewCellIdentifier = @"CTAssetsGridViewCellIdentifier";
 NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIdentifier";
@@ -62,7 +63,7 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
 
 @property (nonatomic, strong) CTAssetsGridViewFooter *footer;
 @property (nonatomic, strong) CTAssetsPickerNoAssetsView *noAssetsView;
-
+@property (nonatomic, strong) CTAssetsPickerAccessDeniedView *acessDeniedView;
 @property (nonatomic, assign) BOOL didLayoutSubviews;
 
 @end
@@ -110,13 +111,64 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
     
 
     [self addNotificationObserver];
-    
     [self setupViews];
     [self registerChangeObserver];
-    [self addNotificationObserver];
-    [self resetCachedAssetImages];
-    [self assetTypeChanged:nil];
+
+    [self checkAuthorizationStatus];
 }
+
+- (void)checkAuthorizationStatus
+{
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    switch (status)
+    {
+        case PHAuthorizationStatusNotDetermined:
+            [self requestAuthorizationStatus];
+            break;
+        case PHAuthorizationStatusRestricted:
+        case PHAuthorizationStatusDenied:
+        {
+            [self showAccessDenied];
+            break;
+        }
+        case PHAuthorizationStatusAuthorized:
+        {
+            [self resetCachedAssetImages];
+            [self assetTypeChanged:nil];
+            break;
+        }
+        default:
+        break;
+        
+    }
+}
+
+#pragma mark - Request authorization status
+
+- (void)requestAuthorizationStatus
+{
+    [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status){
+        switch (status) {
+            case PHAuthorizationStatusAuthorized:
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self resetCachedAssetImages];
+                    [self assetTypeChanged:nil];
+                });
+                break;
+            }
+            default:
+            {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self showAccessDenied];
+                });
+                break;
+            }
+        }
+    }];
+}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
@@ -641,6 +693,26 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     }
 }
 
+#pragma mark - Access denied
+
+- (void)showAccessDenied
+{
+    CTAssetsPickerAccessDeniedView *view = [CTAssetsPickerAccessDeniedView new];
+    [self.view addSubview:view];
+    [view setNeedsUpdateConstraints];
+    [view updateConstraintsIfNeeded];
+    
+    self.acessDeniedView = view;
+}
+
+- (void)hideAccessDenied
+{
+    if (self.acessDeniedView)
+    {
+        [self.acessDeniedView removeFromSuperview];
+        self.acessDeniedView = nil;
+    }
+}
 
 #pragma mark - Collection view data source
 
