@@ -328,7 +328,12 @@
     }
     else
     {
+#if kCCSUploader
         cell.backgroundColor = [UIColor colorFromHex:0x8000ff];
+        #else
+        cell.backgroundColor = [UIColor colorFromHex:0x2e926b];
+#endif
+        
     }
 }
 
@@ -375,7 +380,7 @@
             [lineView autoPinEdgeToSuperviewEdge:ALEdgeLeading];
             [lineView autoPinEdgeToSuperviewEdge:ALEdgeTrailing];
             [lineView autoSetDimension:ALDimensionHeight toSize:2.0];
-            lineView.backgroundColor = [UIColor colorFromHex:0xfff20a];
+            lineView.backgroundColor = self.view.backgroundColor;
         }
         
         if (row == 0 || row == 1)

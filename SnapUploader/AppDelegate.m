@@ -84,7 +84,15 @@
 //    }
     
     [[AdobeUXAuthManager sharedManager] setAuthenticationParametersWithClientID:@"16015d85dcc843eaa46f6db3a3675754" clientSecret:@"512c4633-c473-4318-9bfa-4c7d134bf88d" enableSignUp:NO];
+#if kCCSUploader
+    
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorFromHex:0x2e926b]];
+#else
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorFromHex:0x2989dd]];
+
+#endif
+    
+    
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
