@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E170440D1B9FDC2500CE8917"
-               BuildableName = "Snap Upload.app"
+               BuildableName = "Upload Snaps.app"
                BlueprintName = "SnapUploader"
                ReferencedContainer = "container:SnapUploader.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E170440D1B9FDC2500CE8917"
-            BuildableName = "Snap Upload.app"
+            BuildableName = "Upload Snaps.app"
             BlueprintName = "SnapUploader"
             ReferencedContainer = "container:SnapUploader.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E170440D1B9FDC2500CE8917"
-            BuildableName = "Snap Upload.app"
+            BuildableName = "Upload Snaps.app"
             BlueprintName = "SnapUploader"
             ReferencedContainer = "container:SnapUploader.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "E170440D1B9FDC2500CE8917"
-            BuildableName = "Snap Upload.app"
+            BuildableName = "Upload Snaps.app"
             BlueprintName = "SnapUploader"
             ReferencedContainer = "container:SnapUploader.xcodeproj">
          </BuildableReference>

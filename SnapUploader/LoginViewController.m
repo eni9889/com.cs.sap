@@ -31,7 +31,6 @@
 {
     UITextField *userTextField;
     UITextField *pwdTextField;
-    PHFetchResult *fetchResult;
 }
 @property (nonatomic, strong) PHImageManager *exportManager;
 @property (nonatomic, copy)NSString *googleEmail;
@@ -237,27 +236,21 @@
 
     PHFetchOptions *fetchOptions = [PHFetchOptions new];
     fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeImage];
-    PHFetchResult *asserts = [PHAsset fetchAssetsWithOptions:fetchOptions];
     picker1.assetCollectionFetchOptions = fetchOptions;
     
     fetchOptions = [PHFetchOptions new];
     fetchOptions.predicate = [NSPredicate predicateWithFormat:@"mediaType == %d", PHAssetMediaTypeVideo];
     picker2.assetCollectionFetchOptions = fetchOptions;
 
-    fetchResult = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
-                                             subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary
-                                             options:nil];
     
     CTAssetsGridViewController *photoViewController = [[CTAssetsGridViewController alloc] init];
         photoViewController.title = @"Photo";
-        photoViewController.assetCollection = fetchResult.firstObject;
         photoViewController.picker = picker1;
 
     MyNavigationController *nav = [[MyNavigationController alloc] initWithRootViewController:photoViewController];
     
     CTAssetsGridViewController *videoViewController = [[CTAssetsGridViewController alloc] init];
     videoViewController.title = @"Video";
-    videoViewController.assetCollection = fetchResult.firstObject;
     videoViewController.picker = picker2;
     MyNavigationController *nav2 = [[MyNavigationController alloc] initWithRootViewController:videoViewController];
     

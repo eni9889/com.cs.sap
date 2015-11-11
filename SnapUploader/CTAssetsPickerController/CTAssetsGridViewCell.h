@@ -33,7 +33,7 @@
 @interface CTAssetsGridViewCell : UICollectionViewCell
 
 @property (nonatomic, assign, getter = isEnabled) BOOL enabled;
-
+@property (nonatomic, copy) NSString *representedAssetIdentifier;
 - (void)bind:(PHAsset *)asset;
 
 @end

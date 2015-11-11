@@ -109,11 +109,9 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
             forSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                    withReuseIdentifier:CTAssetsGridViewFooterIdentifier];
     
-
-    [self addNotificationObserver];
     [self setupViews];
+    [self addNotificationObserver];
     [self registerChangeObserver];
-
     [self checkAuthorizationStatus];
 }
 
@@ -169,7 +167,6 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
     }];
 }
 
-
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
@@ -184,10 +181,12 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
 
 - (IBAction)assetTypeChanged:(id)sender
 {
-    PHFetchResult *fetchResult =
-    [PHAsset fetchAssetsInAssetCollection:self.assetCollection
+    PHFetchResult *collection = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum
+                                                           subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary
+                                                           options:nil];
+    self.assetCollection = collection.firstObject;
+    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:self.assetCollection
                                   options:self.picker.assetCollectionFetchOptions];
-    
     self.fetchResult = fetchResult;
     [self reloadData];
 }
@@ -202,13 +201,11 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
         CGPoint origin = CGPointMake(0.0, 0.0);
         app.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait
                                                        origin:origin];
-        //ca-app-pub-2517211357606902/2881830872  com.cs.snapuploadCircle   1049641460
+        
+        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";// com.cs.snapuloader  1048460977
         
         
-        //app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";// com.cs.snapuloader  1048460977
-        
-        
-        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
+        //app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
 
         app.adBanner.delegate = self;
         [app.adBanner setRootViewController:app.window.rootViewController];
@@ -312,12 +309,6 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
 
 - (void)setupAssets
 {
-//    PHFetchResult *fetchResult =
-//    [PHAsset fetchAssetsInAssetCollection:self.assetCollection
-//                                  options:self.picker.assetCollectionFetchOptions];
-//    
-//    self.fetchResult = fetchResult;
-//    [self reloadData];
 }
 
 #pragma mark - Collection view layout
@@ -744,22 +735,12 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     else
         cell.enabled = YES;
     
-    // XXX
-    // Setting `selected` property blocks further deselection.
-    // Have to call selectItemAtIndexPath too. ( ref: http://stackoverflow.com/a/17812116/1648333 )
-    if ([self.picker.selectedAssets containsObject:asset])
-    {
-        cell.selected = YES;
-        [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
-    }
-    
     [cell bind:asset];
     
     UICollectionViewLayoutAttributes *attributes =
     [collectionView.collectionViewLayout layoutAttributesForItemAtIndexPath:indexPath];
     
     CGSize targetSize = [self.picker imageSizeForContainerSize:attributes.size];
-    
     [self requestThumbnailForCell:cell targetSize:targetSize asset:asset];
 
     return cell;
@@ -773,7 +754,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     [self.imageManager requestImageForAsset:asset
                                  targetSize:targetSize
                                 contentMode:PHImageContentModeAspectFill
-                                    options:self.picker.thumbnailRequestOptions
+                                    options:nil
                               resultHandler:^(UIImage *image, NSDictionary *info){
                                   // Only update the image if the cell tag hasn't changed. Otherwise, the cell has been re-used.
                                   if (cell.tag == tag)

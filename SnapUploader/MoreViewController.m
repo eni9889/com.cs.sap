@@ -185,11 +185,11 @@
             float iOSVersion = [[UIDevice currentDevice].systemVersion floatValue];
             if (iOSVersion >= 7.0f && iOSVersion < 7.1f)
             {
-                rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1050477919"];
+                rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1048460977"];
             }
             else
             {
-                rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1050477919"];
+                rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1048460977"];
             }
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rateUrl]];
