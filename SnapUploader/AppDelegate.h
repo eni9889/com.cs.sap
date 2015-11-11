@@ -13,6 +13,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 #import "MyNavigationController.h"
 
+#define kCCSUploader 0
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;

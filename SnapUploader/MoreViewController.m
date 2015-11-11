@@ -73,7 +73,11 @@
 
 - (void)sendFeeback
 {
-    [socila sendFeedback:NSLocalizedString(@"Snap upload", nil) body:nil];
+#if kCCSUploader
+    [socila sendEmail:NSLocalizedString(@"Snap upload", nil) body:nil recipient:@"chenshun87@126.com"];
+#else
+    [socila sendEmail:NSLocalizedString(@"Snap upload", nil) body:nil recipient:@"wangqiong_01@126.com"];
+#endif
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -185,11 +189,19 @@
             float iOSVersion = [[UIDevice currentDevice].systemVersion floatValue];
             if (iOSVersion >= 7.0f && iOSVersion < 7.1f)
             {
+#if kCCSUploader
                 rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1048460977"];
+#else
+                rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1050477919"];
+#endif
             }
             else
             {
+                #if kCCSUploader
                 rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1048460977"];
+                #else
+                rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1050477919"];
+                #endif
             }
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rateUrl]];

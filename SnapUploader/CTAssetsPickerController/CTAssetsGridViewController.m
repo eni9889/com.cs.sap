@@ -202,11 +202,12 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
         app.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait
                                                        origin:origin];
         
+#if kCCSUploader
         app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";// com.cs.snapuloader  1048460977
+#else
         
-        
-        //app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
-
+        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
+#endif
         app.adBanner.delegate = self;
         [app.adBanner setRootViewController:app.window.rootViewController];
         [app.adBanner loadRequest:[self createRequest]];

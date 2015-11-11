@@ -244,7 +244,7 @@
 		E167D20E1BB41E7100EC335F /* x_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_button_pressed@2x.png"; sourceTree = "<group>"; };
 		E167D20F1BB41E7100EC335F /* zoomin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoomin@2x.png"; sourceTree = "<group>"; };
 		E167D2101BB41E7100EC335F /* zoomout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoomout@2x.png"; sourceTree = "<group>"; };
-		E170440E1B9FDC2500CE8917 /* Snap Upload.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snap Upload.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E170440E1B9FDC2500CE8917 /* Upload Snaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Upload Snaps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17044121B9FDC2500CE8917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E17044131B9FDC2500CE8917 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E17044151B9FDC2500CE8917 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -577,7 +577,7 @@
 		E170440F1B9FDC2500CE8917 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E170440E1B9FDC2500CE8917 /* Snap Upload.app */,
+				E170440E1B9FDC2500CE8917 /* Upload Snaps.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -791,7 +791,7 @@
 			);
 			name = SnapUploader;
 			productName = SnapUploader;
-			productReference = E170440E1B9FDC2500CE8917 /* Snap Upload.app */;
+			productReference = E170440E1B9FDC2500CE8917 /* Upload Snaps.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1184,7 +1184,7 @@
 					"-l\"z\"",
 					"-all_load",
 				);
-				PRODUCT_NAME = "Snap Upload";
+				PRODUCT_NAME = "Upload Snaps";
 				PROVISIONING_PROFILE = "3f431c82-3a8f-46e9-b004-50c68918bcad";
 			};
 			name = Debug;
@@ -1223,7 +1223,7 @@
 					"-l\"z\"",
 					"-all_load",
 				);
-				PRODUCT_NAME = "Snap Upload";
+				PRODUCT_NAME = "Upload Snaps";
 				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
 			};
 			name = Release;

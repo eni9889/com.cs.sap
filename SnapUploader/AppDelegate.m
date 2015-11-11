@@ -97,8 +97,13 @@
 
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
+#if kCCSUploader
     [iRate sharedInstance].applicationBundleID = @"com.cs.snapuloader";
     [iRate sharedInstance].appStoreID = 1048460977;
+#else
+    [iRate sharedInstance].applicationBundleID = @"com.wq.snapupload";
+    [iRate sharedInstance].appStoreID = 1050477919;
+#endif
     [iRate sharedInstance].onlyPromptIfLatestVersion = NO;
     [iRate sharedInstance].usesUntilPrompt = 2;
     [iRate sharedInstance].daysUntilPrompt = 0.5;
