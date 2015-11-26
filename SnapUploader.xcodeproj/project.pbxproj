@@ -244,7 +244,7 @@
 		E167D20E1BB41E7100EC335F /* x_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_button_pressed@2x.png"; sourceTree = "<group>"; };
 		E167D20F1BB41E7100EC335F /* zoomin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoomin@2x.png"; sourceTree = "<group>"; };
 		E167D2101BB41E7100EC335F /* zoomout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoomout@2x.png"; sourceTree = "<group>"; };
-		E170440E1B9FDC2500CE8917 /* Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uploader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E170440E1B9FDC2500CE8917 /* Snap Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Snap Uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E17044121B9FDC2500CE8917 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E17044131B9FDC2500CE8917 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E17044151B9FDC2500CE8917 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		E1A274851BC7964600C982D2 /* APLResultsTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APLResultsTableController.m; sourceTree = "<group>"; };
 		E1A274881BC7CD0F00C982D2 /* UIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animation.h"; sourceTree = "<group>"; };
 		E1A274891BC7CD0F00C982D2 /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animation.m"; sourceTree = "<group>"; };
-		E1AA70571BCA76BD00F2F157 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../GoogleMobileAdsSdkiOS-7.5.1/GoogleMobileAds.framework"; sourceTree = "<group>"; };
+		E1AA70571BCA76BD00F2F157 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = "../../GoogleMobileAdsSdkiOS-7.5.2/GoogleMobileAds.framework"; sourceTree = "<group>"; };
 		E1AA70591BCA775F00F2F157 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		E1AA705B1BCA776500F2F157 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		E1AA705D1BCA776B00F2F157 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -577,7 +577,7 @@
 		E170440F1B9FDC2500CE8917 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E170440E1B9FDC2500CE8917 /* Uploader.app */,
+				E170440E1B9FDC2500CE8917 /* Snap Uploader.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -791,7 +791,7 @@
 			);
 			name = SnapUploader;
 			productName = SnapUploader;
-			productReference = E170440E1B9FDC2500CE8917 /* Uploader.app */;
+			productReference = E170440E1B9FDC2500CE8917 /* Snap Uploader.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1128,8 +1128,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Qiong (SYX825N87A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Qiong (SYX825N87A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1144,7 +1144,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "c5970402-1548-4431-baf2-4e395fe7af01";
+				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1162,7 +1162,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					../AdobeCreativeSDKFrameworks,
-					"../GoogleMobileAdsSdkiOS-7.5.1",
+					"../GoogleMobileAdsSdkiOS-7.5.2",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1185,7 +1185,7 @@
 					"-l\"z\"",
 					"-all_load",
 				);
-				PRODUCT_NAME = Uploader;
+				PRODUCT_NAME = "Snap Uploader";
 				PROVISIONING_PROFILE = "3f431c82-3a8f-46e9-b004-50c68918bcad";
 			};
 			name = Debug;
@@ -1196,13 +1196,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Wang Qiong (SYX825N87A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Wang Qiong (SYX825N87A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CHEN SHUN (DNN39LJ53Q)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)",
 					../AdobeCreativeSDKFrameworks,
-					"../GoogleMobileAdsSdkiOS-7.5.1",
+					"../GoogleMobileAdsSdkiOS-7.5.2",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -1225,8 +1225,8 @@
 					"-l\"z\"",
 					"-all_load",
 				);
-				PRODUCT_NAME = Uploader;
-				PROVISIONING_PROFILE = "c5970402-1548-4431-baf2-4e395fe7af01";
+				PRODUCT_NAME = "Snap Uploader";
+				PROVISIONING_PROFILE = "d3cf8bfc-9dcc-489a-a2b1-ebae47441553";
 			};
 			name = Release;
 		};

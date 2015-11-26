@@ -443,23 +443,30 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
     NSString *timestamp = [NSString timestamp];
     
     // Google auth token
-    [self getAuthTokenForGmail:gmailEmail password:gmailPassword callback:^(NSString *gauth, NSError *error1) {
-        if (error1 || !gauth) {
+    [self getAuthTokenForGmail:gmailEmail password:gmailPassword callback:^(NSString *gauth, NSError *error1)
+    {
+        if (error1 || !gauth)
+        {
             completion(nil, [SnapKRequest errorWithMessage:@"Could not retrieve Google auth token." code:error1.code?:1]);
-        } else {
+        }
+        else
+        {
             
-            // Attestation
-            [self getAttestation:username password:password ts:timestamp callback:^(NSString *attestation, NSError *error2) {
-                if (error2 || !attestation) {
-                    completion(nil, [SnapKRequest errorWithMessage:@"Could not retrieve attestation." code:error2.code?:1]);
-                } else {
-                    
-                    // Push token is optional
-                    [self getGoogleCloudMessagingIdentifier:^(NSString *ptoken, NSError *error3) {
-                        [self getDeviceToken:^(NSDictionary *dict, NSError *error4) {
-                            if (error4 || !dict) {
+//            // Attestation
+//            [self getAttestation:username password:password ts:timestamp callback:^(NSString *attestation, NSError *error2) {
+//                if (error2 || !attestation) {
+//                    completion(nil, [SnapKRequest errorWithMessage:@"Could not retrieve attestation." code:error2.code?:1]);
+//                } else {
+//                    
+//                    // Push token is optional
+//                    [self getGoogleCloudMessagingIdentifier:^(NSString *ptoken, NSError *error3) {
+                        [self getDeviceToken:^(NSDictionary *dict, NSError *error4){
+                            if (error4 || !dict)
+                            {
                                 completion(nil, [SnapKRequest errorWithMessage:@"Could not retrieve Snapchat device token." code:error4.code?:1]);
-                            } else {
+                            }
+                            else
+                            {
                                 
                                 // X-Snapchat-Client-Auth
                                 [self getClientAuthToken:username password:password timestamp:timestamp callback:^(NSString *clientAuthToken, NSError *error5) {
@@ -468,15 +475,15 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
                                     } else {
                                         
                                         // Sign in
-                                        NSParameterAssert(gauth); NSParameterAssert(attestation); NSParameterAssert(clientAuthToken); NSParameterAssert(dict); NSParameterAssert(timestamp);
-                                        [self signInWithData:SKMakeSignInParams(gauth, attestation, ptoken, clientAuthToken, dict, timestamp) username:username password:password completion:completion];
+//                                        NSParameterAssert(gauth); NSParameterAssert(attestation); NSParameterAssert(clientAuthToken); NSParameterAssert(dict); NSParameterAssert(timestamp);
+                                        [self signInWithData:SKMakeSignInParams(gauth, @"ie", nil, clientAuthToken, dict, timestamp) username:username password:password completion:completion];
                                     }
                                 }];
                             }
                         }];
-                    }];
-                }
-            }];
+//                    }];
+//                }
+//            }];
         }
     }];
 }

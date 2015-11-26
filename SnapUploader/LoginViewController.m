@@ -22,7 +22,6 @@
 #import "SVProgressHUD.h"
 
 #import "UserInfo.h"
-#import "SVProgressHUD.h"
 #import "AppDelegate.h"
 
 #import "MoreViewController.h"
@@ -124,6 +123,19 @@
 
 - (void)loginSKClient:(BOOL)enterToMain block:(BOOL)blockUI
 {
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD show];
+    dispatch_queue_t queue = dispatch_queue_create("queue", NULL);
+    dispatch_async(queue, ^{
+    
+        sleep(5);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            [SVProgressHUD showErrorWithStatus:@"sf"];
+        });
+    });
+    return;
     if (blockUI)
     {
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
@@ -135,7 +147,7 @@
     // wangqiong0915@gmail.com  wangqiong0915
     [SKClient sharedClient].casperAPIKey = @"4fdd65f73c82260e1c2a84ee97966c27";
     [SKClient sharedClient].casperAPISecret = @"644f39e42f3d9438fcfef5e83062fe06";
-   // [[SKClient sharedClient] signInWithUsername:@"chenshun87@126.com" password:@"ch871116" gmail:@"wangqiong0915@gmail.com" gpass:@"ch871116"
+ //   [[SKClient sharedClient] signInWithUsername:@"chenshun87@126.com" password:@"ch871116" gmail:@"wangqiong0915@gmail.com" gpass:@"ch871116"
     [[SKClient sharedClient] signInWithUsername:self.snapUsername password:self.snapPwd gmail:self.googleEmail gpass:self.googlePwd
                                  completion:^(NSDictionary *json, NSError *error) {
                                 

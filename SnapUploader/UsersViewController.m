@@ -196,6 +196,7 @@
     }
     
     self.view.userInteractionEnabled = NO;
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
@@ -203,19 +204,18 @@
         {
             [[SKClient sharedClient] sendSnap:blob to:names text:self.text timer:self.seconds completion:^(id obj, NSError *error){
                 
-                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
                 self.view.userInteractionEnabled = YES;
                 if (error != nil)
                 {
                     NSLog(@"%@", error);
-                    //[SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
+                    [SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
                 }
                 else
                 {
                     NSLog(@"Upload Success");
-                    //[SVProgressHUD showSuccessWithStatus:@"Upload Success"];
+                    [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
                 }
-                [SVProgressHUD dismiss];
+
                 [self closeView];
             }];
         }
@@ -224,7 +224,7 @@
         {
             [[SKClient sharedClient] postStory:blob for2:24*3600 completion:^(NSError *error){
                 self.view.userInteractionEnabled = YES;
-                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+                
                 if (error != nil)
                 {
                     NSLog(@"postStory %@", error);
