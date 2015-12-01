@@ -77,6 +77,7 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
 {
     if (self = [super init])
     {
+        
     }
     
     return self;

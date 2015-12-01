@@ -14,6 +14,10 @@
 #import "MyNavigationController.h"
 
 #define kCCSUploader 1
+
+//#define kLoginToServerDidEnd @"LoginToServerDidEnd"
+//#define kLoginToServerWillBegin @"LoginToServerWillBegin"
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIViewController *curPopViewController;
