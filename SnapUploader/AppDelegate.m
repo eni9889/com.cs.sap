@@ -124,7 +124,7 @@
     BOOL autoLogin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AutoLogin"] boolValue];
     if (autoLogin)
     {
-        [self.loginViewController startLogin:NO block:NO];
+        [self.loginViewController startLogin:NO];
     }
 }
 

@@ -14,6 +14,6 @@
 @property (nonatomic, strong)UITabBarController *myTabBarController;
 @property (nonatomic) int loginErrorCode;
 - (void)enterToMainView:(UIWindow *)window;
-- (void)startLogin:(BOOL)enterToMain block:(BOOL)blockUI;
+- (void)startLogin:(BOOL)enterToMain;
 - (void)restoreSession;
 @end

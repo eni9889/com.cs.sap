@@ -89,6 +89,13 @@
         
         self.realName = [mutableDic objectForKey:@"realAccountName"];
     }
+    
+    NSString *sessionPath = [documentsDirectory stringByAppendingPathComponent:@"session.plist"];
+    SKSession *session = [NSKeyedUnarchiver unarchiveObjectWithFile:sessionPath];
+    if (session != nil)
+    {
+        [SKClient sharedClient].currentSession = session;
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -102,10 +109,10 @@
 {
     self.snapUsername = userTextField.text;
     self.snapPwd = pwdTextField.text;
-    [self startLogin:YES block:YES];
+    [self startLogin:YES];
 }
 
-- (void)startLogin:(BOOL)enterToMain block:(BOOL)blockUI
+- (void)startLogin:(BOOL)enterToMain
 {
     [userTextField resignFirstResponder];
     [pwdTextField resignFirstResponder];
@@ -114,76 +121,73 @@
     BOOL sucess = [self checkParame];
     if (sucess)
     {
-        [self loginSKClient:enterToMain block:blockUI];
+        [self loginSKClient:enterToMain refresh:NO];
     }
 }
 
 - (void)restoreSession
 {
     [[SKClient sharedClient] restoreSessionWithUsername:[SKClient sharedClient].username snapchatAuthToken:[SKClient sharedClient].authToken googleAuthToken:[SKClient sharedClient].googleAuthToken doGetUpdates:^(NSError *error){
-        if (error == nil)
-        {
-            [UserInfo refreshFromRemote];
-            [self saveParam];
-            
-            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%u", (uint)[[NSDate date] timeIntervalSince1970]] forKey:@"loginSuccessTime"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            NSLog(@"restoresession success");
-        }
-        else
-        {
-            NSLog(@"restoresession error %@", error);
-        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+        
+            if (error == nil)
+            {
+                [UserInfo refreshFromRemote];
+                [self saveParam];
+                self.loginErrorCode = 0;
+                NSLog(@"restoresession success");
+            }
+            else
+            {
+                NSLog(@"restoresession error %@", error);
+                [self loginSKClient:NO refresh:YES];
+            }
+        });
+
     }];
 }
 
-- (void)loginSKClient:(BOOL)enterToMain block:(BOOL)blockUI
+- (void)loginSKClient:(BOOL)enterToMain refresh:(BOOL)doRefresh
 {
-    if (blockUI)
-    {
-        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    }
-    [SVProgressHUD show];
-    
     self.loginErrorCode = 1;
+
     //https://clients.casper.io/login.php?in=true&next=%2Fdocs-casper-api-auth.php
     // wangqiong0915@gmail.com  wangqiong0915
     [SKClient sharedClient].casperAPIKey = @"4fdd65f73c82260e1c2a84ee97966c27";
     [SKClient sharedClient].casperAPISecret = @"644f39e42f3d9438fcfef5e83062fe06";
     
-    if ([self.snapchatAuthToken length] != 0 && [self.realName length] != 0)
+    if ([self.snapchatAuthToken length] != 0 && [self.realName length] != 0 && !doRefresh)
     {
-        if ([self.googleAuthToken length] != 0)
+        if ([self.googleAuthToken length] != 0 && [SKClient sharedClient].currentSession != nil)
         {
             [SKClient clientWithUsername:self.realName authToken:self.snapchatAuthToken gauth:self.googleAuthToken];
-            [SVProgressHUD dismiss];
-            if (blockUI)
-            {
-                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-            }
-            self.loginErrorCode = 0;
+            [self restoreSession];
         }
         else
         {
             [[SKClient sharedClient] signInWithUsername:self.realName authToken:self.snapchatAuthToken gmail:self.googleEmail gpass:self.googlePwd completion:^(NSDictionary *dic, NSError *error){
                 
+                NSLog(@"request gauth and updatesession = %@", error);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     if (error == nil)
                     {
                         [self saveParam];
+                        self.loginErrorCode = 0;
                     }
                     else
                     {
-                        NSLog(@"signInWithUsername authToken = %@", error);
+                        [self loginSKClient:NO refresh:YES];
                     }
-                    
                 });
             }];
         }
     }
     else
     {
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD show];
          [[SKClient sharedClient] signInWithUsername:self.snapUsername password:self.snapPwd gmail:self.googleEmail gpass:self.googlePwd
                                      completion:^(NSDictionary *json, NSError *error) {
                                          
@@ -191,10 +195,7 @@
                                              
                                              NSLog(@"signInWithUsername %@", error);
                                              [SVProgressHUD dismiss];
-                                             if (blockUI)
-                                             {
-                                                 [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-                                             }
+                                             [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
                                              
                                              if (error == nil)
                                              {
@@ -207,9 +208,7 @@
                                                  }
                                                  
                                                  [self saveParam];
-                                                 
-                                                 [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%u", (uint)[[NSDate date] timeIntervalSince1970]] forKey:@"loginSuccessTime"];
-                                                 [[NSUserDefaults standardUserDefaults] synchronize];
+
                                              }
                                              else if ([error code] == -1)
                                              {
@@ -261,6 +260,14 @@
     }
     
     [mutableDic writeToFile:path atomically:YES];
+    
+    NSString *sessionPath = [documentsDirectory stringByAppendingPathComponent:@"session.plist"];
+    SKSession *session = [SKClient sharedClient].currentSession;
+    if (session != nil)
+    {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:session];
+        [data writeToFile:sessionPath atomically:YES];
+    }
 }
 
 - (BOOL)checkParame
@@ -346,7 +353,7 @@
             self.googlePwd = @"";
         }
 
-        [self loginSKClient:YES block:YES];
+        [self loginSKClient:YES refresh:YES];
     }
 }
 

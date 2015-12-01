@@ -113,7 +113,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [SVProgressHUD dismiss];
 }
 
 - (void)updateViewConstraints
@@ -125,6 +124,7 @@
 - (IBAction)goBack:(id)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [SVProgressHUD dismiss];
 }
 
 - (void)loadAlpa
@@ -195,8 +195,9 @@
         self.seconds = 1;
     }
     
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-    [SVProgressHUD showWithStatus:@"Processing..."];
+    self.view.userInteractionEnabled = NO;
+    [SVProgressHUD showWithStatus:@"Uploading..."];
+    __weak UsersViewController *weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if ([names count] > 0)
@@ -214,8 +215,16 @@
                     {
                         [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
                     }
-                    
-                    [self closeView];
+                    self.view.userInteractionEnabled = YES;
+                    if (weakSelf != nil)
+                    {
+                        [weakSelf closeView];
+                        
+                    }
+                    else
+                    {
+                        NSLog(@"I have been dealloc");
+                    }
                 });
 
             }];
@@ -237,7 +246,14 @@
                         NSLog(@"postStory Success");
                         [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
                     }
-                    [self closeView];
+                    if (weakSelf != nil)
+                    {
+                        [weakSelf closeView];
+                    }
+                    else
+                    {
+                        NSLog(@"I have been dealloc");
+                    }
                 });
 
             }];
