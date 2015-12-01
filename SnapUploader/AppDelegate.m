@@ -128,6 +128,11 @@
     }
 }
 
++ (AppDelegate *)app
+{
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
 - (UIImage *)imageWithColor:(UIColor *)color
 {
     CGRect rect = CGRectMake(0.0f, 0.0f, self.window.bounds.size.width / 2.0, 49.0f);

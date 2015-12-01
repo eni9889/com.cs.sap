@@ -16,11 +16,13 @@
 #define kCCSUploader 1
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property (strong, nonatomic) UIViewController *curPopViewController;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic)LoginViewController *loginViewController;
 @property (strong, nonatomic)MyNavigationController *rootNavViewController;
 @property (nonatomic, retain) GADBannerView *adBanner;
 
 - (void)showMainView;
++ (AppDelegate *)app;
 @end
 

@@ -38,12 +38,14 @@
 #import "NSIndexSet+CTAssetsPickerController.h"
 #import "NSBundle+CTAssetsPickerController.h"
 #import "PureLayout.h"
-
+#import "PHAsset+CTAssetsPickerController.h"
 #import "AppDelegate.h"
 //#import "UIImageExtras.h"
 
 #import "MoreViewController.h"
 #import "CTAssetsPickerAccessDeniedView.h"
+#import "EditVideoController.h"
+#import "CTAssetItemViewController.h"
 
 NSString * const CTAssetsGridViewCellIdentifier = @"CTAssetsGridViewCellIdentifier";
 NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIdentifier";
@@ -138,7 +140,6 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
         }
         default:
         break;
-        
     }
 }
 
@@ -195,35 +196,35 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
 {
     [super viewWillAppear:animated];
     
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.adBanner == nil)
-    {
-        CGPoint origin = CGPointMake(0.0, 0.0);
-        app.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait
-                                                       origin:origin];
-        
-#if kCCSUploader
-        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";// com.cs.snapuloader  1048460977
-#else
-        
-        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
-#endif
-        app.adBanner.delegate = self;
-        [app.adBanner setRootViewController:app.window.rootViewController];
-        [app.adBanner loadRequest:[self createRequest]];
-    }
-    
-    if (app.adBanner.superview != nil)
-    {
-        [app.adBanner removeFromSuperview];
-    }
-    
-    CGRect rect = app.adBanner.frame;
-    rect.origin.y = (self.view.frame.size.height - rect.size.height - 2);
-    rect.origin.x = (self.view.frame.size.width - rect.size.width) / 2;
-    app.adBanner.frame = rect;
-    
-    [self.view addSubview:app.adBanner];
+//    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    if (app.adBanner == nil)
+//    {
+//        CGPoint origin = CGPointMake(0.0, 0.0);
+//        app.adBanner = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait
+//                                                       origin:origin];
+//        
+//#if kCCSUploader
+//        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/2917673674";// com.cs.snapuloader  1048460977
+//#else
+//        
+//        app.adBanner.adUnitID = @"ca-app-pub-2517211357606902/5772761678";//com.wq.snapupload           1050477919
+//#endif
+//        app.adBanner.delegate = self;
+//        [app.adBanner setRootViewController:app.window.rootViewController];
+//        [app.adBanner loadRequest:[self createRequest]];
+//    }
+//    
+//    if (app.adBanner.superview != nil)
+//    {
+//        [app.adBanner removeFromSuperview];
+//    }
+//    
+//    CGRect rect = app.adBanner.frame;
+//    rect.origin.y = (self.view.frame.size.height - rect.size.height - 2);
+//    rect.origin.x = (self.view.frame.size.width - rect.size.width) / 2;
+//    app.adBanner.frame = rect;
+//    
+//    [self.view addSubview:app.adBanner];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -800,8 +801,28 @@ didFailToReceiveAdWithError:(GADRequestError *)error {
     
     [self.picker selectAsset:asset];
     
-    if ([self.picker.delegate respondsToSelector:@selector(didSelectAtIndexPath:asserts:)])
-        [self.picker.delegate didSelectAtIndexPath:indexPath asserts:self.fetchResult];
+//    if ([self.picker.delegate respondsToSelector:@selector(didSelectAtIndexPath:asserts:)])
+//        [self.picker.delegate didSelectAtIndexPath:indexPath asserts:self.fetchResult];
+
+    PHAsset *passet = [self.fetchResult objectAtIndex:indexPath.item];
+    MyNavigationController *nav;
+    if ([passet ctassetsPickerIsVideo])
+    {
+        EditVideoController *itemView = [EditVideoController assetItemViewControllerForAsset:passet];
+        nav = [[MyNavigationController alloc] initWithRootViewController:itemView];
+    }
+    else
+    {
+        
+        CTAssetItemViewController *itemView = [CTAssetItemViewController assetItemViewControllerForAsset:passet];
+        nav = [[MyNavigationController alloc] initWithRootViewController:itemView];
+    }
+    
+    [AppDelegate app].curPopViewController = self.navigationController;
+    if (nav != nil)
+    {
+        [self.navigationController presentViewController:nav animated:YES completion:nil];
+    }
 }
 
 - (BOOL)collectionView:(UICollectionView *)collectionView shouldDeselectItemAtIndexPath:(NSIndexPath *)indexPath

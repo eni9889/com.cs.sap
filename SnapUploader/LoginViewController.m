@@ -139,14 +139,11 @@
 
 - (void)loginSKClient:(BOOL)enterToMain block:(BOOL)blockUI
 {
-    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-    [SVProgressHUD show];
-
     if (blockUI)
     {
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-        [SVProgressHUD show];
     }
+    [SVProgressHUD show];
     
     self.loginErrorCode = 1;
     //https://clients.casper.io/login.php?in=true&next=%2Fdocs-casper-api-auth.php
@@ -160,6 +157,10 @@
         {
             [SKClient clientWithUsername:self.realName authToken:self.snapchatAuthToken gauth:self.googleAuthToken];
             [SVProgressHUD dismiss];
+            if (blockUI)
+            {
+                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+            }
             self.loginErrorCode = 0;
         }
         else
@@ -370,14 +371,13 @@
     {
         EditVideoController *itemView = [EditVideoController assetItemViewControllerForAsset:passet];
         MyNavigationController *nav = [[MyNavigationController alloc] initWithRootViewController:itemView];
-        app.window.rootViewController = nav;
+//        app.window.rootViewController = nav;
     }
     else
     {
         
         CTAssetItemViewController *itemView = [CTAssetItemViewController assetItemViewControllerForAsset:passet];
         MyNavigationController *nav = [[MyNavigationController alloc] initWithRootViewController:itemView];
-        app.window.rootViewController = nav;
     }
 }
 

@@ -31,7 +31,7 @@
 
 @property (nonatomic, strong, readonly) PHAsset *asset;
 @property (nonatomic, strong, readonly) UIImage *image;
-
+@property (nonatomic, weak)UIViewController *popViewController;
 + (EditVideoController *)assetItemViewControllerForAsset:(PHAsset *)asset;
 
 - (void)playAsset:(id)sender;

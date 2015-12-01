@@ -196,7 +196,7 @@
     }
     
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"Processing..."];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
         if ([names count] > 0)
@@ -247,11 +247,7 @@
 
 - (void)closeView
 {
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    if (app.window.rootViewController != app.loginViewController.myTabBarController)
-    {
-        app.window.rootViewController = app.loginViewController.myTabBarController;
-    }
+    [[AppDelegate app].curPopViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)touchDownHandle:(id)sender

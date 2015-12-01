@@ -31,7 +31,6 @@
 
 @property (nonatomic, strong, readonly) PHAsset *asset;
 @property (nonatomic, strong, readonly) UIImage *image;
-
 + (CTAssetItemViewController *)assetItemViewControllerForAsset:(PHAsset *)asset;
 + (CTAssetItemViewController *)assetItemViewControllerForFile:(NSString *)path asset:(PHAsset *)asset;
 - (void)playAsset:(id)sender;

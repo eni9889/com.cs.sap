@@ -212,8 +212,7 @@
 
 - (void)closeView:(id)sender
 {
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    app.window.rootViewController = app.loginViewController.myTabBarController;
+    [[AppDelegate app].curPopViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)chooseVideo:(id)sender
@@ -240,15 +239,17 @@
             {
                 NSLog(@"success");
                 dispatch_async(dispatch_get_main_queue(), ^{
-
-                    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                    [SVProgressHUD dismiss];
                     CTAssetItemViewController *itemView = [CTAssetItemViewController assetItemViewControllerForFile:destinationPath asset:self.asset];
-                    MyNavigationController *nav = [[MyNavigationController alloc] initWithRootViewController:itemView];
-                    app.window.rootViewController = nav;
+                    [self.navigationController pushViewController:itemView animated:YES];
                 });
             }
             else
             {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD dismiss];
+                    
+                });
                 NSLog(@"error: %@", [exportSession error]);
             }
         }];

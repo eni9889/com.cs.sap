@@ -465,9 +465,7 @@
 
 - (void)closeView:(id)sender
 {
-    self.navigationController.navigationBarHidden = NO;
-    AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    app.window.rootViewController = app.loginViewController.myTabBarController;
+    [[AppDelegate app].curPopViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveAssets:(id)sender
