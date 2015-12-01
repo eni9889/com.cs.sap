@@ -49,7 +49,7 @@
 {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
     {
-        
+        self.loginErrorCode = -1;
     }
     return self;
 }
@@ -60,6 +60,7 @@
     self.mTableView.backgroundColor = self.view.backgroundColor;
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.title = @"Snap Uploader";
+    self.loginErrorCode = -1;
 }
 
 - (void)loadParam
@@ -116,7 +117,6 @@
 {
     [userTextField resignFirstResponder];
     [pwdTextField resignFirstResponder];
-    self.loginErrorCode = -1;
     [self loadParam];
     BOOL sucess = [self checkParame];
     if (sucess)
@@ -130,7 +130,7 @@
     [[SKClient sharedClient] restoreSessionWithUsername:[SKClient sharedClient].username snapchatAuthToken:[SKClient sharedClient].authToken googleAuthToken:[SKClient sharedClient].googleAuthToken doGetUpdates:^(NSError *error){
         
         dispatch_async(dispatch_get_main_queue(), ^{
-        
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             if (error == nil)
             {
                 [UserInfo refreshFromRemote];
@@ -140,6 +140,7 @@
             }
             else
             {
+                self.loginErrorCode = -1;
                 NSLog(@"restoresession error %@", error);
                 [self loginSKClient:NO refresh:YES];
             }
@@ -150,8 +151,14 @@
 
 - (void)loginSKClient:(BOOL)enterToMain refresh:(BOOL)doRefresh
 {
+    if (self.loginErrorCode == 1)
+    {
+        return;
+    }
+    
     self.loginErrorCode = 1;
-
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     //https://clients.casper.io/login.php?in=true&next=%2Fdocs-casper-api-auth.php
     // wangqiong0915@gmail.com  wangqiong0915
     [SKClient sharedClient].casperAPIKey = @"4fdd65f73c82260e1c2a84ee97966c27";
@@ -178,8 +185,10 @@
                     }
                     else
                     {
+                        self.loginErrorCode = -1;
                         [self loginSKClient:NO refresh:YES];
                     }
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 });
             }];
         }
@@ -187,18 +196,19 @@
     else
     {
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
-        [SVProgressHUD show];
+        [SVProgressHUD showWithStatus:@"Logging in to server..."];
          [[SKClient sharedClient] signInWithUsername:self.snapUsername password:self.snapPwd gmail:self.googleEmail gpass:self.googlePwd
                                      completion:^(NSDictionary *json, NSError *error) {
                                          
                                          dispatch_async(dispatch_get_main_queue(), ^{
                                              
                                              NSLog(@"signInWithUsername %@", error);
-                                             [SVProgressHUD dismiss];
+                                             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                                              [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
-                                             
                                              if (error == nil)
                                              {
+                                                 [SVProgressHUD dismiss];
+                                                 
                                                  self.loginErrorCode = 0;
                                                  [UserInfo refreshFromRemote];
                                                  
@@ -208,12 +218,11 @@
                                                  }
                                                  
                                                  [self saveParam];
-
                                              }
-                                             else if ([error code] == -1)
+                                             else
                                              {
                                                  self.loginErrorCode = -1;
-                                                 [SVProgressHUD showErrorWithStatus:@"Unknow error"];
+                                                 [SVProgressHUD showErrorWithStatus:[error localizedDescription]];
                                              }
                                          });
                                      }];

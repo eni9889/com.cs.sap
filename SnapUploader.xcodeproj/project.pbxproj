@@ -12,6 +12,7 @@
 		364B01DE1BC4236000BFF291 /* backArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 364B01DB1BC4236000BFF291 /* backArrow@2x.png */; };
 		364B01DF1BC4236000BFF291 /* backArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 364B01DC1BC4236000BFF291 /* backArrow@3x.png */; };
 		364B01E21BC427B200BFF291 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B01E11BC427B200BFF291 /* UserInfo.m */; };
+		E105040F1C0D8E7A00D1C65E /* LoginPara.m in Sources */ = {isa = PBXBuildFile; fileRef = E105040E1C0D8E7A00D1C65E /* LoginPara.m */; };
 		E14FF80B1BA945DC00BC22F2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FF8091BA945DC00BC22F2 /* LoginViewController.m */; };
 		E14FF80C1BA945DC00BC22F2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14FF80A1BA945DC00BC22F2 /* LoginViewController.xib */; };
 		E14FF8111BA9467700BC22F2 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FF8101BA9467700BC22F2 /* UIColor+HexColor.m */; };
@@ -165,6 +166,8 @@
 		364B01E11BC427B200BFF291 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		5170D502F44F92BAF12B1505 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A2DF7C12EB615928F3023D2D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E105040D1C0D8E7A00D1C65E /* LoginPara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPara.h; sourceTree = "<group>"; };
+		E105040E1C0D8E7A00D1C65E /* LoginPara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPara.m; sourceTree = "<group>"; };
 		E14FF8081BA945DC00BC22F2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E14FF8091BA945DC00BC22F2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E14FF80A1BA945DC00BC22F2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -590,6 +593,8 @@
 				E172D14A1BC37E4600D74209 /* SVProgressHUD */,
 				E14FF8081BA945DC00BC22F2 /* LoginViewController.h */,
 				E14FF8091BA945DC00BC22F2 /* LoginViewController.m */,
+				E105040D1C0D8E7A00D1C65E /* LoginPara.h */,
+				E105040E1C0D8E7A00D1C65E /* LoginPara.m */,
 				E16640A71BC3C89700DBD451 /* UsersViewController.h */,
 				E16640A81BC3C89700DBD451 /* UsersViewController.m */,
 				E1A274881BC7CD0F00C982D2 /* UIView+Animation.h */,
@@ -988,6 +993,7 @@
 				E1B015D61BB13333000467DF /* CTAssetPlayButton.m in Sources */,
 				E1B015CE1BB13333000467DF /* PHAsset+CTAssetsPickerController.m in Sources */,
 				E1A2748A1BC7CD0F00C982D2 /* UIView+Animation.m in Sources */,
+				E105040F1C0D8E7A00D1C65E /* LoginPara.m in Sources */,
 				E172D1531BC37E4600D74209 /* SVIndefiniteAnimatedView.m in Sources */,
 				E1B015D91BB13333000467DF /* CTAssetsGridViewController.m in Sources */,
 				E1B015D51BB13333000467DF /* CTAssetItemViewController.m in Sources */,

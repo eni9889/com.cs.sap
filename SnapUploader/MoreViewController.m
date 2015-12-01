@@ -64,6 +64,21 @@
         
         AppDelegate *app = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [app showMainView];
+        
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *path = [documentsDirectory stringByAppendingPathComponent:@"loginPara.plist"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        }
+        
+        path = [documentsDirectory stringByAppendingPathComponent:@"session.plist"];
+        if ([[NSFileManager defaultManager] fileExistsAtPath:path])
+        {
+            [[NSFileManager defaultManager] removeItemAtPath:path error:nil];
+        }
+        
         if ([[SKClient sharedClient] isSignedIn])
         {
             [[SKClient sharedClient] signOut:^(NSError *error){}];
