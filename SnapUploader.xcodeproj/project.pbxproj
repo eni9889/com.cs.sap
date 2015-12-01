@@ -13,6 +13,10 @@
 		364B01DF1BC4236000BFF291 /* backArrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 364B01DC1BC4236000BFF291 /* backArrow@3x.png */; };
 		364B01E21BC427B200BFF291 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 364B01E11BC427B200BFF291 /* UserInfo.m */; };
 		E105040F1C0D8E7A00D1C65E /* LoginPara.m in Sources */ = {isa = PBXBuildFile; fileRef = E105040E1C0D8E7A00D1C65E /* LoginPara.m */; };
+		E10504151C0DA82900D1C65E /* developer_contact.png in Resources */ = {isa = PBXBuildFile; fileRef = E10504131C0DA82900D1C65E /* developer_contact.png */; };
+		E10504161C0DA82900D1C65E /* developer_contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E10504141C0DA82900D1C65E /* developer_contact@2x.png */; };
+		E10504191C0DA83000D1C65E /* share_vote.png in Resources */ = {isa = PBXBuildFile; fileRef = E10504171C0DA83000D1C65E /* share_vote.png */; };
+		E105041A1C0DA83000D1C65E /* share_vote@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E10504181C0DA83000D1C65E /* share_vote@2x.png */; };
 		E14FF80B1BA945DC00BC22F2 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FF8091BA945DC00BC22F2 /* LoginViewController.m */; };
 		E14FF80C1BA945DC00BC22F2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E14FF80A1BA945DC00BC22F2 /* LoginViewController.xib */; };
 		E14FF8111BA9467700BC22F2 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = E14FF8101BA9467700BC22F2 /* UIColor+HexColor.m */; };
@@ -168,6 +172,10 @@
 		A2DF7C12EB615928F3023D2D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E105040D1C0D8E7A00D1C65E /* LoginPara.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginPara.h; sourceTree = "<group>"; };
 		E105040E1C0D8E7A00D1C65E /* LoginPara.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginPara.m; sourceTree = "<group>"; };
+		E10504131C0DA82900D1C65E /* developer_contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = developer_contact.png; sourceTree = "<group>"; };
+		E10504141C0DA82900D1C65E /* developer_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "developer_contact@2x.png"; sourceTree = "<group>"; };
+		E10504171C0DA83000D1C65E /* share_vote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_vote.png; sourceTree = "<group>"; };
+		E10504181C0DA83000D1C65E /* share_vote@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_vote@2x.png"; sourceTree = "<group>"; };
 		E14FF8081BA945DC00BC22F2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		E14FF8091BA945DC00BC22F2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E14FF80A1BA945DC00BC22F2 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -498,6 +506,10 @@
 		E167D1701BB41E7000EC335F /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				E10504171C0DA83000D1C65E /* share_vote.png */,
+				E10504181C0DA83000D1C65E /* share_vote@2x.png */,
+				E10504131C0DA82900D1C65E /* developer_contact.png */,
+				E10504141C0DA82900D1C65E /* developer_contact@2x.png */,
 				E1D961851BCB53490061C745 /* appAbout.png */,
 				364B01DA1BC4236000BFF291 /* backArrow.png */,
 				E1D961871BCBB74C0061C745 /* pen_button_pressed.png */,
@@ -891,6 +903,7 @@
 				E167D27B1BB41E7100EC335F /* save_button.png in Resources */,
 				E1AA70801BCA936D00F2F157 /* iRate.bundle in Resources */,
 				E167D2181BB41E7100EC335F /* arrow3.png in Resources */,
+				E10504161C0DA82900D1C65E /* developer_contact@2x.png in Resources */,
 				E167D2971BB41E7100EC335F /* setting_pressed.png in Resources */,
 				E167D27E1BB41E7100EC335F /* save_button_pressed@2x.png in Resources */,
 				E1B015E41BB13333000467DF /* CTAssetsPicker.strings in Resources */,
@@ -900,6 +913,7 @@
 				E1D961841BCB4A020061C745 /* LaunchScreen.xib in Resources */,
 				E167D29E1BB41E7100EC335F /* share@2x.png in Resources */,
 				E167D2AC1BB41E7100EC335F /* x_button@2x.png in Resources */,
+				E105041A1C0DA83000D1C65E /* share_vote@2x.png in Resources */,
 				E167D2151BB41E7100EC335F /* arrow0.png in Resources */,
 				E167D2A81BB41E7100EC335F /* VideoEdit_PlayButtonNormal@2x.png in Resources */,
 				E167D2AF1BB41E7100EC335F /* zoomin@2x.png in Resources */,
@@ -915,8 +929,10 @@
 				E167D29D1BB41E7100EC335F /* share.png in Resources */,
 				E167D29C1BB41E7100EC335F /* settingClicked@2x.png in Resources */,
 				E167D2371BB41E7100EC335F /* deleteAll.png in Resources */,
+				E10504191C0DA83000D1C65E /* share_vote.png in Resources */,
 				E1D9618C1BCBB74C0061C745 /* pen_button_pressed@2x.png in Resources */,
 				E167D29A1BB41E7100EC335F /* setting_unpressed@2x.png in Resources */,
+				E10504151C0DA82900D1C65E /* developer_contact.png in Resources */,
 				E167D22F1BB41E7100EC335F /* close@2x.png in Resources */,
 				E167D2A21BB41E7100EC335F /* timer_button_pressed@2x.png in Resources */,
 				E167D29B1BB41E7100EC335F /* settingClicked.png in Resources */,

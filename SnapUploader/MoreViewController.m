@@ -12,8 +12,7 @@
 #import "TTSocial.h"
 #import "AppDelegate.h"
 #import "SKClient.h"
-#define kRateAppUrl     @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=2&mt=8"
-#define kRateiOS7AppStoreURLFormat @"itms-apps://itunes.apple.com/app/id%@"
+#define kRateAppUrl   @"itms://itunes.apple.com/us/app/id%@?mt=8"
 
 @interface MoreViewController ()
 {
@@ -175,10 +174,12 @@
         if (row == 0)
         {
             text = @"Rate us";
+            cell.imageView.image = [UIImage imageNamed:@"share_vote"];
         }
         else
         {
             text = @"Send Feedback";
+            cell.imageView.image = [UIImage imageNamed:@"developer_contact"];
         }
         cell.textLabel.text = text;
     }
@@ -201,23 +202,12 @@
         if (row == 0)
         {
             NSString *rateUrl;
-            float iOSVersion = [[UIDevice currentDevice].systemVersion floatValue];
-            if (iOSVersion >= 7.0f && iOSVersion < 7.1f)
-            {
-#if kCCSUploader
-                rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1048460977"];
-#else
-                rateUrl = [NSString stringWithFormat:kRateiOS7AppStoreURLFormat, @"1050477919"];
-#endif
-            }
-            else
-            {
-                #if kCCSUploader
-                rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1048460977"];
-                #else
-                rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1050477919"];
-                #endif
-            }
+            #if kCCSUploader
+            rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1048460977"];
+            #else
+            rateUrl = [NSString stringWithFormat:kRateAppUrl, @"1050477919"];
+            #endif
+            
             
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:rateUrl]];
         }
