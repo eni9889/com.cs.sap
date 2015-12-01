@@ -195,7 +195,6 @@
         self.seconds = 1;
     }
     
-    self.view.userInteractionEnabled = NO;
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
     [SVProgressHUD show];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -204,38 +203,43 @@
         {
             [[SKClient sharedClient] sendSnap:blob to:names text:self.text timer:self.seconds completion:^(id obj, NSError *error){
                 
-                self.view.userInteractionEnabled = YES;
-                if (error != nil)
-                {
-                    NSLog(@"%@", error);
-                    [SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
-                }
-                else
-                {
-                    NSLog(@"Upload Success");
-                    [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
-                }
+                dispatch_async(dispatch_get_main_queue(), ^{
+                
+                    if (error != nil)
+                    {
+                        NSLog(@"%@", error);
+                        [SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
+                    }
+                    else
+                    {
+                        [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
+                    }
+                    
+                    [self closeView];
+                });
 
-                [self closeView];
             }];
         }
         
         if (hasSelectStory)
         {
             [[SKClient sharedClient] postStory:blob for2:24*3600 completion:^(NSError *error){
-                self.view.userInteractionEnabled = YES;
                 
-                if (error != nil)
-                {
-                    NSLog(@"postStory %@", error);
-                    [SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
-                }
-                else
-                {
-                    NSLog(@"postStory Success");
-                    [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
-                }
-                [self closeView];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if (error != nil)
+                    {
+                        NSLog(@"postStory %@", error);
+                        [SVProgressHUD showErrorWithStatus:@"Upload Faild, please try again later"];
+                    }
+                    else
+                    {
+                        NSLog(@"postStory Success");
+                        [SVProgressHUD showSuccessWithStatus:@"Upload Success"];
+                    }
+                    [self closeView];
+                });
+
             }];
         }
     });

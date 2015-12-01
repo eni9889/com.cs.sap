@@ -54,9 +54,12 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
 }
 
 
-@implementation SKClient
+@interface SKClient()
+@property (nonatomic, readwrite, copy) NSString *authToken;
+@property (nonatomic, readwrite, copy) NSString *googleAuthToken;
+@end
 
-@synthesize authToken = _authToken;
+@implementation SKClient
 
 #pragma mark Initializers
 
@@ -69,6 +72,16 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
     });
     
     return sharedSKClient;
+}
+
++ (instancetype)clientWithUsername:(NSString *)username authToken:(NSString *)authToken gauth:(NSString *)googleAuthToken {
+    SKClient *client         = [SKClient sharedClient];
+    NSLog(@"%@", client);
+    
+    client.username          = username;
+    client.authToken       = authToken;
+    client.googleAuthToken = googleAuthToken;
+    return client;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -539,6 +552,24 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
             });
         }];
     }] resume];
+}
+
+- (void)signInWithUsername:(NSString *)username authToken:(NSString *)authToken gmail:(NSString *)gmailEmail gpass:(NSString *)gmailPassword completion:(DictionaryBlock)completion {
+    NSParameterAssert(username); NSParameterAssert(authToken); NSParameterAssert(gmailEmail); NSParameterAssert(gmailPassword);
+    
+    _googleAuthToken = nil;
+    [self getAuthTokenForGmail:gmailEmail password:gmailPassword callback:^(NSString *gauth, NSError *error) {
+        if (!error) {
+            _googleAuthToken = gauth;
+            _authToken       = authToken;
+            self.username    = username;
+            [[SKClient sharedClient] updateSession:^(NSError *error2) {
+                completion([self.currentSession valueForKey:@"JSON"], error2);
+            }];
+        } else {
+            completion(nil, error);
+        }
+    }];
 }
 
 - (void)restoreSessionWithUsername:(NSString *)username snapchatAuthToken:(NSString *)authToken googleAuthToken:(NSString *)googleAuthToken doGetUpdates:(ErrorBlock)completion {

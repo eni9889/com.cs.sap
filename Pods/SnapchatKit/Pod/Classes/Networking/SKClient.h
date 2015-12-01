@@ -30,6 +30,9 @@ extern NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret);
 /** The default Snapchat session manager. To use more than one account, simply create and manage your own instances of \c SKClient instead of using the singleton. */
 + (instancetype)sharedClient;
 
+/** Initializes an \c SKClient instance with the minimum data required to resume an existing session. \c currentSession needs to be updated afterwards. */
++ (instancetype)clientWithUsername:(NSString *)username authToken:(NSString *)authToken gauth:(NSString *)googleAuthToken;
+
 /** See the \c SKMiddleMan protocol. */
 @property (nonatomic) id<SKMiddleMan> middleMan;
 
@@ -47,9 +50,9 @@ extern NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret);
 // Data used to sign in
 
 /** Used internally to sign in. Passed in either of the \c -restoreSessionWithUsername:snapchatAuthToken: methods as the \c snapchatAuthToken: parameter. */
-@property (nonatomic, readonly) NSString *authToken;
+@property (nonatomic, readonly, copy) NSString *authToken;
 /** Used internally to sign in. Passed as the \c googleAuthToken: parameter to \c -restoreSessionWithUsername:snapchatAuthToken:googleAuthToken: method. */
-@property (nonatomic, readonly) NSString *googleAuthToken;
+@property (nonatomic, readonly, copy) NSString *googleAuthToken;
 /** Used internally. */
 @property (nonatomic, readonly) NSString *deviceToken1i;
 /** Used internally. */
@@ -72,6 +75,15 @@ extern NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret);
  @param gmailPassword The password associated with \c gmailEmail.
  @param completion Takes an error, if any, and the JSON response from signing in as a dictionary. */
 - (void)signInWithUsername:(NSString *)username password:(NSString *)password gmail:(NSString *)gmailEmail gpass:(NSString *)gmailPassword completion:(DictionaryBlock)completion;
+
+/** Signs into Snapchat without signing out an existing session by using that session's Snapchat auth token.
+ @param username The Snapchat username to sign in with.
+ @param authToken The auth token of an active Snapchat session.
+ @param gmailEmail A vaild GMail address.
+ @param gmailPassword The password associated with \c gmailEmail.
+ @param completion Takes an error, if any, and the JSON response from signing in as a dictionary. */
+- (void)signInWithUsername:(NSString *)username authToken:(NSString *)authToken gmail:(NSString *)gmailEmail gpass:(NSString *)gmailPassword completion:(DictionaryBlock)completion;
+
 //- (void)restoreSessionWithUsername:(NSString *)username snapchatAuthToken:(NSString *)authToken doGetUpdates:(ErrorBlock)comletion;
 /** Use this to restore a session that ended within the last hour. The google auth token must be re-generated every hour.
  @discussion If you have a stale Google auth token, consider using \c -restoreSessionWithUsername:snapchatAuthToken:doGetUpdates:.

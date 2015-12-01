@@ -76,7 +76,6 @@
     NSDictionary *headers = @{SKHeaders.clientAuthToken: [NSString stringWithFormat:@"Bearer %@", self.googleAuthToken],
                               SKHeaders.contentType: [NSString stringWithFormat:@"multipart/form-data; boundary=%@", SKConsts.boundary]};
 
-    NSLog(@"------------- uploadSnap");
 
     [SnapKRequest postTo:SKEPSnaps.upload query:query headers:headers token:self.authToken callback:^(NSData *data, NSURLResponse *response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

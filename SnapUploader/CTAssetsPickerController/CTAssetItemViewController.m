@@ -632,7 +632,7 @@
     [self.imageManager requestImageForAsset:self.asset
                                  targetSize:targetSize
                                 contentMode:PHImageContentModeAspectFit
-                                    options:options
+                                    options:nil
                               resultHandler:^(UIImage *image, NSDictionary *info) {
 
                                   // this image is set for transition animation

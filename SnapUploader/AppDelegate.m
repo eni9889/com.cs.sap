@@ -124,16 +124,7 @@
     BOOL autoLogin = [[[NSUserDefaults standardUserDefaults] objectForKey:@"AutoLogin"] boolValue];
     if (autoLogin)
     {
-        uint last = [[[NSUserDefaults standardUserDefaults] objectForKey:@"loginSuccessTime"] intValue];
-        uint utc = [[NSDate date] timeIntervalSince1970];
-        //if (utc - last >= 3000 || ![[SKClient sharedClient] isSignedIn])
-        {
-            [self.loginViewController startLogin:NO block:NO];
-        }
-//        else if ([[SKClient sharedClient] isSignedIn])
-//        {
-//            [self.loginViewController restoreSession];
-//        }
+        [self.loginViewController startLogin:NO block:NO];
     }
 }
 
