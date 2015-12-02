@@ -224,7 +224,7 @@ NSString * const CTAssetsGridViewFooterIdentifier = @"CTAssetsGridViewFooterIden
     rect.origin.y = (self.view.frame.size.height - rect.size.height - 2);
     rect.origin.x = (self.view.frame.size.width - rect.size.width) / 2;
     app.adBanner.frame = rect;
-    
+    app.adBanner.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self.view addSubview:app.adBanner];
 }
 

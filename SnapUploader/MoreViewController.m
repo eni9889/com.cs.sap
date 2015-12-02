@@ -176,11 +176,12 @@
             text = @"Rate us";
             cell.imageView.image = [UIImage imageNamed:@"share_vote"];
         }
-        else
+        else if (row == 1)
         {
             text = @"Send Feedback";
             cell.imageView.image = [UIImage imageNamed:@"developer_contact"];
         }
+
         cell.textLabel.text = text;
     }
     else

@@ -472,7 +472,12 @@
 {
     if ([self.asset ctassetsPickerIsPhoto])
     {
-        UIImageWriteToSavedPhotosAlbum(self.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
+        UIImage *scaledImage = self.image;
+        if ([self.textField.text length] > 0)
+        {
+            scaledImage = [self.image addTextOnImage:CGSizeMake(kMaxImageWidth, kMaxImageWidth) text:self.textField.text];
+        }
+        UIImageWriteToSavedPhotosAlbum(scaledImage, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
     }
     else
     {
