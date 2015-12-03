@@ -61,6 +61,7 @@
     self.mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.title = @"Snap Uploader";
     self.loginErrorCode = -1;
+    [self loadParam];
 }
 
 - (void)loadParam
@@ -125,30 +126,6 @@
     }
 }
 
-- (void)restoreSession
-{
-    [[SKClient sharedClient] restoreSessionWithUsername:[SKClient sharedClient].username snapchatAuthToken:[SKClient sharedClient].authToken googleAuthToken:[SKClient sharedClient].googleAuthToken doGetUpdates:^(NSError *error){
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-            if (error == nil)
-            {
-                [UserInfo refreshFromRemote];
-                [self saveParam];
-                self.loginErrorCode = 0;
-                NSLog(@"restoresession success");
-            }
-            else
-            {
-                self.loginErrorCode = -1;
-                NSLog(@"restoresession error %@", error);
-                [self loginSKClient:NO refresh:YES];
-            }
-        });
-
-    }];
-}
-
 - (void)loginSKClient:(BOOL)enterToMain refresh:(BOOL)doRefresh
 {
     if (self.loginErrorCode == 1)
@@ -168,25 +145,90 @@
     {
         if ([self.googleAuthToken length] != 0 && [SKClient sharedClient].currentSession != nil)
         {
+            if (enterToMain)
+            {
+                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+                [SVProgressHUD showWithStatus:@"Logging in to server..."];
+            }
+            else
+            {
+                [SVProgressHUD showWithStatus:@"Updating..."];
+            }
+            
             [SKClient clientWithUsername:self.realName authToken:self.snapchatAuthToken gauth:self.googleAuthToken];
-            [self restoreSession];
+            [[SKClient sharedClient] restoreSessionWithUsername:[SKClient sharedClient].username
+                                              snapchatAuthToken:[SKClient sharedClient].authToken
+                                                googleAuthToken:[SKClient sharedClient].googleAuthToken
+                                                   doGetUpdates:^(NSError *error){
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+                    
+                    if (enterToMain)
+                    {
+                        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+                    }
+                    [SVProgressHUD dismiss];
+                    if (error == nil)
+                    {
+                        [UserInfo refreshFromRemote];
+                        [self saveParam];
+                        self.loginErrorCode = 0;
+                        NSLog(@"restoresession success");
+                        
+                        if (enterToMain)
+                        {
+                            [self enterToMainView:self.view.window];
+                        }
+                    }
+                    else
+                    {
+                        self.loginErrorCode = -1;
+                        NSLog(@"restoresession error %@", error);
+                        [self loginSKClient:enterToMain refresh:YES];
+                    }
+                });
+                
+            }];
         }
         else
         {
+            if (enterToMain)
+            {
+                [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+                [SVProgressHUD showWithStatus:@"Logging in to server..."];
+            }
+            else
+            {
+                [SVProgressHUD showWithStatus:@"Updating..."];
+            }
+            NSLog(@"start getAuthTokenForGmail");
             [[SKClient sharedClient] signInWithUsername:self.realName authToken:self.snapchatAuthToken gmail:self.googleEmail gpass:self.googlePwd completion:^(NSDictionary *dic, NSError *error){
                 
                 NSLog(@"request gauth and updatesession = %@", error);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
+                    if (enterToMain)
+                    {
+                        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+                    }
+                    [SVProgressHUD dismiss];
+                    
                     if (error == nil)
                     {
+                        [UserInfo refreshFromRemote];
                         [self saveParam];
                         self.loginErrorCode = 0;
+                        
+                        if (enterToMain)
+                        {
+                            [self enterToMainView:self.view.window];
+                        }
                     }
                     else
                     {
                         self.loginErrorCode = -1;
-                        [self loginSKClient:NO refresh:YES];
+                        [self loginSKClient:enterToMain refresh:YES];
                     }
                     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
                 });

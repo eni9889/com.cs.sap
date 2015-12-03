@@ -15,5 +15,4 @@
 @property (nonatomic) int loginErrorCode;
 - (void)enterToMainView:(UIWindow *)window;
 - (void)startLogin:(BOOL)enterToMain;
-- (void)restoreSession;
 @end

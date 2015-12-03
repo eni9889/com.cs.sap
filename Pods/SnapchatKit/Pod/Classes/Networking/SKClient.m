@@ -558,9 +558,8 @@ NSString *SKMakeCapserSignature(NSDictionary *params, NSString *secret) {
     NSParameterAssert(username); NSParameterAssert(authToken); NSParameterAssert(gmailEmail); NSParameterAssert(gmailPassword);
     
     _googleAuthToken = nil;
-    NSLog(@"start getAuthTokenForGmail");
+    
     [self getAuthTokenForGmail:gmailEmail password:gmailPassword callback:^(NSString *gauth, NSError *error) {
-        NSLog(@"getAuthTokenForGmail = %@", error);
         if (!error) {
             _googleAuthToken = gauth;
             _authToken       = authToken;
